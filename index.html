@@ -1,0 +1,670 @@
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login | TN Skills - Government of Tamil Nadu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Tamil:wght@500;600;700&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Tamil', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+          colors: {
+            tnBlue: '#007bff',
+            tnBlueHover: '#0069d9',
+            tnGreen: '#16c60c',
+            tnNavy: '#001a88',
+            tnSkyHeader: '#84cdee',
+          }
+        }
+      }
+    };
+  </script>
+
+
+
+  <!-- VIEW 1: USER LOGIN PORTAL -->
+  <div id="loginView" class="min-h-screen flex flex-col">
+    <header class="w-full bg-white border-b border-[#e5e7eb] relative z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 md:gap-14">
+        <div class="flex items-center gap-3.5 sm:gap-4">
+          <div class="w-16 h-16 sm:w-[70px] sm:h-[70px] flex-shrink-0">
+            <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-[0_1px_1px_rgba(0,0,0,0.08)]" aria-label="Government of Tamil Nadu Emblem">
+              <defs>
+                <path id="topArc" d="M 28,100 A 72,72 0 1,1 172,100"></path>
+                <path id="bottomArc" d="M 30,108 A 72,72 0 0,0 170,108"></path>
+                <linearGradient id="gopuramGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#d97706"></stop>
+                  <stop offset="30%" stop-color="#fbbf24"></stop>
+                  <stop offset="50%" stop-color="#fef08a"></stop>
+                  <stop offset="70%" stop-color="#f59e0b"></stop>
+                  <stop offset="100%" stop-color="#b45309"></stop>
+                </linearGradient>
+                <linearGradient id="redBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ef4444"></stop>
+                  <stop offset="100%" stop-color="#b91c1c"></stop>
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="92" fill="#ffffff" stroke="#15803d" stroke-width="3.5"></circle>
+              <circle cx="100" cy="100" r="85" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 2"></circle>
+              <circle cx="100" cy="100" r="65" fill="#fefce8" stroke="#15803d" stroke-width="2"></circle>
+              <text fill="#14532d" font-size="12.5" font-weight="700" letter-spacing="1.2">
+                <textPath href="#topArc" startOffset="50%" text-anchor="middle">தமிழ்நாடு அரசு</textPath>
+              </text>
+              <text fill="#14532d" font-size="10.5" font-weight="700" letter-spacing="0.8">
+                <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">வாய்மையே வெல்லும்</textPath>
+              </text>
+              <g transform="translate(46, 76) rotate(-14)">
+                <rect x="0" y="0" width="24" height="5.5" fill="#ff9933" rx="0.5"></rect>
+                <rect x="0" y="5.5" width="24" height="5.5" fill="#ffffff"></rect>
+                <circle cx="12" cy="8.25" r="2.1" fill="none" stroke="#000080" stroke-width="0.8"></circle>
+                <rect x="0" y="11" width="24" height="5.5" fill="#138808" rx="0.5"></rect>
+                <line x1="24" y1="-2" x2="24" y2="36" stroke="#78350f" stroke-width="1.8"></line>
+              </g>
+              <g transform="translate(130, 70) rotate(14)">
+                <rect x="0" y="0" width="24" height="5.5" fill="#ff9933" rx="0.5"></rect>
+                <rect x="0" y="5.5" width="24" height="5.5" fill="#ffffff"></rect>
+                <circle cx="12" cy="8.25" r="2.1" fill="none" stroke="#000080" stroke-width="0.8"></circle>
+                <rect x="0" y="11" width="24" height="5.5" fill="#138808" rx="0.5"></rect>
+                <line x1="0" y1="-2" x2="0" y2="36" stroke="#78350f" stroke-width="1.8"></line>
+              </g>
+              <circle cx="91" cy="41" r="1.8" fill="#b45309"></circle>
+              <circle cx="95.5" cy="40" r="2" fill="#b45309"></circle>
+              <circle cx="100" cy="39.5" r="2.2" fill="#b45309"></circle>
+              <circle cx="104.5" cy="40" r="2" fill="#b45309"></circle>
+              <circle cx="109" cy="41" r="1.8" fill="#b45309"></circle>
+              <path d="M 86,47 Q 100,41 114,47 L 116,53 L 84,53 Z" fill="url(#gopuramGold)" stroke="#92400e" stroke-width="1"></path>
+              <polygon points="84,53 116,53 119,65 81,65" fill="url(#gopuramGold)" stroke="#92400e" stroke-width="1"></polygon>
+              <polygon points="81,65 119,65 122,78 78,78" fill="url(#gopuramGold)" stroke="#92400e" stroke-width="1"></polygon>
+              <polygon points="78,78 122,78 125,92 75,92" fill="url(#gopuramGold)" stroke="#92400e" stroke-width="1"></polygon>
+              <polygon points="74,92 126,92 129,112 71,112" fill="url(#gopuramGold)" stroke="#92400e" stroke-width="1.1"></polygon>
+              <line x1="82" y1="59" x2="118" y2="59" stroke="#92400e" stroke-width="0.9"></line>
+              <line x1="79" y1="71.5" x2="121" y2="71.5" stroke="#92400e" stroke-width="0.9"></line>
+              <line x1="76" y1="85" x2="124" y2="85" stroke="#92400e" stroke-width="0.9"></line>
+              <rect x="96" y="55" width="8" height="8" rx="1" fill="#78350f"></rect>
+              <rect x="95.5" y="67" width="9" height="9" rx="1" fill="#78350f"></rect>
+              <rect x="95" y="80" width="10" height="10" rx="1" fill="#78350f"></rect>
+              <rect x="93" y="95" width="14" height="17" rx="1" fill="#78350f"></rect>
+              <rect x="96" y="98" width="8" height="14" fill="#fef08a"></rect>
+              <path d="M 62,112 L 138,112 L 132,126 Q 100,134 68,126 Z" fill="url(#redBase)" stroke="#7f1d1d" stroke-width="1.2"></path>
+              <line x1="65" y1="118" x2="135" y2="118" stroke="#fca5a5" stroke-width="1"></line>
+              <circle cx="100" cy="121" r="6" fill="#fbbf24" stroke="#78350f" stroke-width="0.8"></circle>
+            </svg>
+          </div>
+          <div class="text-left leading-snug">
+            <p class="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight">தமிழ்நாடு அரசு</p>
+            <p class="text-[13px] sm:text-[14.5px] font-bold text-slate-900 tracking-tight mt-0.5">Government of Tamil Nadu</p>
+            <p class="text-[12.5px] sm:text-[14px] font-bold text-slate-900 tracking-tight mt-0.5">Special Programme Implementation Department</p>
+          </div>
+        </div>
+
+        <div class="bg-[#f5f6f8] px-3 py-1 rounded border border-slate-100/80 flex items-center justify-center">
+          <svg viewBox="0 0 215 118" class="w-40 sm:w-[175px] h-auto" aria-label="TN Skills Logo">
+            <defs>
+              <pattern id="tnDots" x="0" y="0" width="4.5" height="4.5" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.25" fill="#b08d57" opacity="0.7"></circle>
+              </pattern>
+            </defs>
+            <path d="M 122,18 L 146,16 L 154,28 L 149,44 L 156,56 L 144,74 L 134,82 L 122,98 L 106,108 L 96,104 L 98,90 L 88,78 L 82,66 L 90,54 L 104,46 L 112,32 Z" fill="url(#tnDots)"></path>
+            <path d="M 118,8 C 134,18 148,38 152,64 L 142,67 C 137,42 124,25 108,16 Z" fill="#1d4ed8"></path>
+            <path d="M 103,32 C 122,36 142,48 158,68 L 152,75 C 136,56 118,46 100,42 Z" fill="#dc2626"></path>
+            <path d="M 112,24 C 138,24 166,36 184,58 L 176,65 C 160,45 135,34 110,33 Z" fill="#eab308"></path>
+            <path d="M 134,44 C 152,48 168,58 178,74 L 170,79 C 160,65 146,56 130,52 Z" fill="#16a34a"></path>
+            <g transform="translate(8, 66)">
+              <polygon points="15,0 30,6 15,12 0,6" fill="#64748b"></polygon>
+              <path d="M 6,9 L 6,14 Q 15,18 24,14 L 24,9 L 15,12.5 Z" fill="#475569"></path>
+              <path d="M 27,7 L 29,16" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"></path>
+              <circle cx="29" cy="17" r="1.4" fill="#64748b"></circle>
+            </g>
+            <text x="12" y="106" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#9a7b4f" letter-spacing="-1">TN</text>
+            <text x="64" y="106" font-family="Inter, sans-serif" font-weight="700" font-size="40" fill="#334155" letter-spacing="-1.2">skills</text>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative flex-1 flex items-center justify-center px-4 py-10 sm:py-14 overflow-hidden bg-[#f4f5f7]">
+      <svg class="absolute inset-0 w-full h-full pointer-events-none select-none" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="polyLeftLight" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f8fafc"></stop>
+            <stop offset="100%" stop-color="#ffffff"></stop>
+          </linearGradient>
+          <linearGradient id="polyTopRight" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e5e7eb"></stop>
+            <stop offset="60%" stop-color="#f1f3f5"></stop>
+            <stop offset="100%" stop-color="#f8fafc"></stop>
+          </linearGradient>
+          <linearGradient id="polyBottomLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#eaedf1"></stop>
+            <stop offset="100%" stop-color="#ffffff"></stop>
+          </linearGradient>
+          <linearGradient id="polyBottomRight" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f8f9fa"></stop>
+            <stop offset="100%" stop-color="#ffffff"></stop>
+          </linearGradient>
+          <filter id="softFacetShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#94a3b8" flood-opacity="0.16"></feDropShadow>
+          </filter>
+        </defs>
+        <rect width="1440" height="800" fill="#f3f4f6"></rect>
+        <polygon points="640,0 1440,0 1440,660 480,350" fill="url(#polyTopRight)"></polygon>
+        <polygon points="0,480 480,350 405,715 0,560" fill="url(#polyBottomLeft)"></polygon>
+        <polygon points="0,0 640,0 405,715 0,480" fill="url(#polyLeftLight)" filter="url(#softFacetShadow)"></polygon>
+        <polygon points="0,560 405,715 480,350 1440,660 1440,800 0,800" fill="url(#polyBottomRight)"></polygon>
+      </svg>
+
+      <section aria-labelledby="login-heading" class="relative z-10 w-full max-w-[475px] bg-white/95 backdrop-blur-[2px] border border-[#e2e8f0] rounded-[3px] shadow-[0_2px_14px_rgba(15,23,42,0.03)]">
+        <div class="px-6 py-6 border-b border-[#edf2f7] flex items-center justify-center gap-3">
+          <svg class="w-7 h-7 text-[#334155] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="9.5" r="3"></circle>
+            <path d="M6.8 18.6c1.2-2.2 3.1-3.4 5.2-3.4s4 1.2 5.2 3.4"></path>
+          </svg>
+          <h1 id="login-heading" class="text-[23px] sm:text-[24px] font-medium text-[#334155] tracking-tight">User Login</h1>
+        </div>
+
+        <form id="loginForm" novalidate="" class="px-6 sm:px-12 pt-8 pb-9 space-y-5">
+          <div id="statusAlert" role="alert" class="hidden rounded-[4px] px-3.5 py-2.5 text-[13px] font-medium border transition-all duration-200 flex items-start gap-2.5">
+            <span id="statusIcon" class="mt-0.5 flex-shrink-0"></span>
+            <span id="statusMessage" class="leading-snug"></span>
+          </div>
+
+          <div>
+            <label for="phoneInput" class="sr-only">Phone Number</label>
+            <div class="flex items-stretch w-full border border-[#cbd5e1] rounded-[3px] bg-white overflow-hidden focus-within:border-tnBlue focus-within:ring-2 focus-within:ring-tnBlue/15 transition">
+              <div class="w-[44px] flex items-center justify-center border-r border-[#e2e8f0] text-slate-600 bg-[#fcfcfd] flex-shrink-0">
+                <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <input id="phoneInput" name="phoneNumber" type="text" autocomplete="tel" placeholder="Phone Number" class="w-full h-[44px] px-3.5 text-[13.5px] text-slate-700 placeholder-[#94a3b8] bg-white focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label for="passwordInput" class="sr-only">Password</label>
+            <div class="flex items-stretch w-full border border-[#cbd5e1] rounded-[3px] bg-white overflow-hidden focus-within:border-tnBlue focus-within:ring-2 focus-within:ring-tnBlue/15 transition">
+              <div class="w-[44px] flex items-center justify-center border-r border-[#e2e8f0] text-slate-600 bg-[#fcfcfd] flex-shrink-0">
+                <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="8.5" cy="15.5" r="4.5"></circle>
+                  <path d="M12 12l8-8"></path>
+                  <path d="M17 7l2.5 2.5"></path>
+                  <path d="M19.5 4.5L22 7"></path>
+                </svg>
+              </div>
+              <input id="passwordInput" name="password" type="password" autocomplete="current-password" placeholder="Password" class="w-full h-[44px] px-3.5 text-[13.5px] text-slate-700 placeholder-[#94a3b8] bg-white focus:outline-none">
+            </div>
+          </div>
+
+          <div class="pt-1 flex flex-wrap sm:flex-nowrap items-center gap-3">
+            <div class="w-full sm:w-[134px] flex-shrink-0">
+              <label for="captchaInput" class="sr-only">Captcha</label>
+              <input id="captchaInput" name="captcha" type="text" maxlength="6" autocomplete="off" spellcheck="false" placeholder="Captcha" class="w-full h-[44px] px-3 text-[13.5px] text-slate-700 placeholder-[#94a3b8] border border-[#cbd5e1] rounded-[4px] bg-white focus:outline-none focus:border-tnBlue focus:ring-2 focus:ring-tnBlue/15 transition uppercase">
+            </div>
+
+            <div class="flex items-center gap-2.5 flex-shrink-0">
+              <div class="w-[164px] h-[44px] rounded-[2px] overflow-hidden border border-[#8e7d96]/40 shadow-inner bg-[#82718a]">
+                <canvas id="captchaCanvas" width="164" height="44" class="block w-full h-full select-none" aria-label="Security Captcha Image"></canvas>
+              </div>
+
+              <button type="button" id="refreshCaptchaBtn" title="Refresh Captcha" aria-label="Refresh Captcha" class="w-9 h-9 rounded-full flex items-center justify-center text-[#16c60c] hover:text-[#12a80a] hover:bg-green-50 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#16c60c]/30 transition">
+                <svg id="refreshIcon" class="w-[24px] h-[24px] transition-transform duration-500 ease-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+                  <polyline points="21 3 21 9 15 9"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-3">
+            <button type="submit" id="loginSubmitBtn" class="w-full h-[44px] bg-[#007bff] hover:bg-[#0069d9] active:bg-[#005cbf] text-white font-medium text-[14.5px] rounded-[4px] shadow-sm transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#007bff]/40 cursor-pointer">
+              Login
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- VIEW 2: CANDIDATES DETAILS DASHBOARD -->
+  <div id="dashboardView" class="hidden min-h-screen flex-col bg-white">
+    <header class="w-full bg-white border-b border-[#dcdcdc] px-4 sm:px-8 py-2.5">
+      <div class="max-w-6xl flex flex-wrap items-center gap-6 sm:gap-12 md:gap-16 pl-2 sm:pl-24 md:pl-36">
+        <div class="flex flex-col items-center select-none">
+          <svg viewBox="0 0 190 92" class="w-32 sm:w-[148px] h-auto" aria-label="TN Skill Logo">
+            <text x="4" y="66" fill="#001a88" font-family="Impact, 'Arial Narrow', 'Bebas Neue', sans-serif" font-weight="900" font-size="68" letter-spacing="-1.5" transform="scale(0.86, 1.05)">TN Skill</text>
+            <polygon points="122,48 164,14 168,21 126,55" fill="#facc15"></polygon>
+            <polygon points="116,38 128,48 124,54 112,44" fill="#facc15"></polygon>
+            <text x="92" y="84" text-anchor="middle" fill="#1e293b" font-family="'Noto Sans Tamil', sans-serif" font-weight="600" font-size="11.5" letter-spacing="1.6">திறன் தமிழ்நாடு</text>
+          </svg>
+        </div>
+
+        <div class="flex items-center gap-3.5 sm:gap-4">
+          <div class="w-16 h-16 sm:w-[70px] sm:h-[70px] flex-shrink-0">
+            <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-[0_1px_1px_rgba(0,0,0,0.08)]" aria-label="Government of Tamil Nadu Emblem">
+              <defs>
+                <path id="dashTopArc" d="M 28,100 A 72,72 0 1,1 172,100"></path>
+                <path id="dashBottomArc" d="M 30,108 A 72,72 0 0,0 170,108"></path>
+                <linearGradient id="dashGopuramGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#d97706"></stop>
+                  <stop offset="30%" stop-color="#fbbf24"></stop>
+                  <stop offset="50%" stop-color="#fef08a"></stop>
+                  <stop offset="70%" stop-color="#f59e0b"></stop>
+                  <stop offset="100%" stop-color="#b45309"></stop>
+                </linearGradient>
+                <linearGradient id="dashRedBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ef4444"></stop>
+                  <stop offset="100%" stop-color="#b91c1c"></stop>
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="92" fill="#ffffff" stroke="#15803d" stroke-width="3.5"></circle>
+              <circle cx="100" cy="100" r="85" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 2"></circle>
+              <circle cx="100" cy="100" r="65" fill="#fefce8" stroke="#15803d" stroke-width="2"></circle>
+              <text fill="#14532d" font-size="12.5" font-weight="700" letter-spacing="1.2">
+                <textPath href="#dashTopArc" startOffset="50%" text-anchor="middle">தமிழ்நாடு அரசு</textPath>
+              </text>
+              <text fill="#14532d" font-size="10.5" font-weight="700" letter-spacing="0.8">
+                <textPath href="#dashBottomArc" startOffset="50%" text-anchor="middle">வாய்மையே வெல்லும்</textPath>
+              </text>
+              <g transform="translate(46, 76) rotate(-14)">
+                <rect x="0" y="0" width="24" height="5.5" fill="#ff9933" rx="0.5"></rect>
+                <rect x="0" y="5.5" width="24" height="5.5" fill="#ffffff"></rect>
+                <circle cx="12" cy="8.25" r="2.1" fill="none" stroke="#000080" stroke-width="0.8"></circle>
+                <rect x="0" y="11" width="24" height="5.5" fill="#138808" rx="0.5"></rect>
+                <line x1="24" y1="-2" x2="24" y2="36" stroke="#78350f" stroke-width="1.8"></line>
+              </g>
+              <g transform="translate(130, 70) rotate(14)">
+                <rect x="0" y="0" width="24" height="5.5" fill="#ff9933" rx="0.5"></rect>
+                <rect x="0" y="5.5" width="24" height="5.5" fill="#ffffff"></rect>
+                <circle cx="12" cy="8.25" r="2.1" fill="none" stroke="#000080" stroke-width="0.8"></circle>
+                <rect x="0" y="11" width="24" height="5.5" fill="#138808" rx="0.5"></rect>
+                <line x1="0" y1="-2" x2="0" y2="36" stroke="#78350f" stroke-width="1.8"></line>
+              </g>
+              <circle cx="91" cy="41" r="1.8" fill="#b45309"></circle>
+              <circle cx="95.5" cy="40" r="2" fill="#b45309"></circle>
+              <circle cx="100" cy="39.5" r="2.2" fill="#b45309"></circle>
+              <circle cx="104.5" cy="40" r="2" fill="#b45309"></circle>
+              <circle cx="109" cy="41" r="1.8" fill="#b45309"></circle>
+              <path d="M 86,47 Q 100,41 114,47 L 116,53 L 84,53 Z" fill="url(#dashGopuramGold)" stroke="#92400e" stroke-width="1"></path>
+              <polygon points="84,53 116,53 119,65 81,65" fill="url(#dashGopuramGold)" stroke="#92400e" stroke-width="1"></polygon>
+              <polygon points="81,65 119,65 122,78 78,78" fill="url(#dashGopuramGold)" stroke="#92400e" stroke-width="1"></polygon>
+              <polygon points="78,78 122,78 125,92 75,92" fill="url(#dashGopuramGold)" stroke="#92400e" stroke-width="1"></polygon>
+              <polygon points="74,92 126,92 129,112 71,112" fill="url(#dashGopuramGold)" stroke="#92400e" stroke-width="1.1"></polygon>
+              <line x1="82" y1="59" x2="118" y2="59" stroke="#92400e" stroke-width="0.9"></line>
+              <line x1="79" y1="71.5" x2="121" y2="71.5" stroke="#92400e" stroke-width="0.9"></line>
+              <line x1="76" y1="85" x2="124" y2="85" stroke="#92400e" stroke-width="0.9"></line>
+              <rect x="96" y="55" width="8" height="8" rx="1" fill="#78350f"></rect>
+              <rect x="95.5" y="67" width="9" height="9" rx="1" fill="#78350f"></rect>
+              <rect x="95" y="80" width="10" height="10" rx="1" fill="#78350f"></rect>
+              <rect x="93" y="95" width="14" height="17" rx="1" fill="#78350f"></rect>
+              <rect x="96" y="98" width="8" height="14" fill="#fef08a"></rect>
+              <path d="M 62,112 L 138,112 L 132,126 Q 100,134 68,126 Z" fill="url(#dashRedBase)" stroke="#7f1d1d" stroke-width="1.2"></path>
+              <line x1="65" y1="118" x2="135" y2="118" stroke="#fca5a5" stroke-width="1"></line>
+              <circle cx="100" cy="121" r="6" fill="#fbbf24" stroke="#78350f" stroke-width="0.8"></circle>
+            </svg>
+          </div>
+          <div class="text-left leading-snug">
+            <p class="text-[13px] sm:text-[14px] font-semibold text-slate-800 tracking-tight">தமிழ்நாடு அரசு</p>
+            <p class="text-[13px] sm:text-[14.5px] font-bold text-slate-900 tracking-tight mt-0.5">Government of Tamil Nadu</p>
+            <p class="text-[12.5px] sm:text-[14px] font-bold text-slate-900 tracking-tight mt-0.5">Special Programme Implementation Department</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex-1 flex flex-col md:flex-row">
+      <aside class="w-full md:w-[205px] bg-[#e6e6e6] border-b md:border-b-0 md:border-r border-[#d4d4d4] flex-shrink-0">
+        <div class="w-full bg-[#007bff] text-white text-center font-semibold text-[13.5px] tracking-wide py-3 px-4 uppercase">MENU</div>
+        <nav aria-label="Dashboard Menu" class="flex flex-row md:flex-col">
+          <button type="button" id="navDashboardBtn" class="flex-1 md:flex-none flex items-center gap-2.5 px-3.5 py-3 text-[13.5px] font-medium text-[#111827] hover:bg-[#dcdcdc] border-r md:border-r-0 border-b border-[#f2f2f2] transition-colors text-left cursor-pointer">
+            <svg class="w-4 h-4 text-[#007bff] flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+            </svg>
+            <span>DashBoard</span>
+          </button>
+
+          <button type="button" id="logoutBtn" class="flex-1 md:flex-none flex items-center gap-2.5 px-3.5 py-3 text-[13.5px] font-medium text-[#111827] hover:bg-[#dcdcdc] border-b border-[#f2f2f2] transition-colors text-left cursor-pointer">
+            <svg class="w-4 h-4 text-[#007bff] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Log-Out</span>
+          </button>
+        </nav>
+      </aside>
+
+      <main class="flex-1 bg-white p-4 sm:p-6 md:px-7 md:py-5">
+        <div class="w-full">
+          <div class="bg-[#007bff] text-white px-5 py-3.5 rounded-t-[3px] text-[14.5px] font-normal tracking-wide">Candidates Details</div>
+          <div class="bg-white border border-[#e2e8f0] border-t-0 rounded-b-[3px] p-4 sm:p-5">
+            <div id="downloadToast" role="status" class="hidden mb-4 rounded-[4px] bg-emerald-50 border border-emerald-200 text-emerald-800 px-3.5 py-2 text-[13px] font-medium flex items-center justify-between">
+              <span id="downloadToastText">TN_Skills_2026_Hall_Ticket_J_Kishor.pdf downloaded successfully.</span>
+              <button type="button" id="closeToastBtn" class="text-emerald-700 hover:text-emerald-950 font-bold ml-4">×</button>
+            </div>
+
+            <div class="overflow-x-auto border border-[#e2e8f0]">
+              <table class="w-full border-collapse text-left min-w-[540px]">
+                <thead>
+                  <tr class="bg-[#87ceeb] text-[#1e293b] text-[13px] sm:text-[13.5px] font-bold uppercase tracking-wide">
+                    <th class="w-[42%] py-3.5 px-3.5 border-r border-[#bce3f5]">NAME OF THE APPLICANT</th>
+                    <th class="w-[30%] py-3.5 px-3.5 border-r border-[#bce3f5]">MOBILE NUMBER</th>
+                    <th class="w-[28%] py-3.5 px-3.5">APPLICATION STATUS</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white text-[13.5px] sm:text-[14px] text-[#334155]">
+                  <tr>
+                    <td id="candidateNameCell" class="py-4 px-3.5 border-r border-[#e2e8f0] font-normal">J Kishor</td>
+                    <td id="candidateMobileCell" class="py-4 px-3.5 border-r border-[#e2e8f0] font-normal">6381623447</td>
+                    <td class="py-3 px-3.5">
+                      <button type="button" id="downloadStatusBtn" class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-blue-50 active:bg-blue-100 text-[#007bff] border border-[#007bff] rounded-[4px] text-[13.5px] font-normal transition-colors cursor-pointer">
+                        <svg class="w-4 h-4 text-[#007bff]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                          <polyline points="7 10 12 15 17 10"></polyline>
+                          <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Download</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const loginView = document.getElementById('loginView');
+      const dashboardView = document.getElementById('dashboardView');
+      const canvas = document.getElementById('captchaCanvas');
+      const ctx = canvas.getContext('2d');
+      const refreshBtn = document.getElementById('refreshCaptchaBtn');
+      const refreshIcon = document.getElementById('refreshIcon');
+      const loginForm = document.getElementById('loginForm');
+      const phoneInput = document.getElementById('phoneInput');
+      const passwordInput = document.getElementById('passwordInput');
+      const captchaInput = document.getElementById('captchaInput');
+      const statusAlert = document.getElementById('statusAlert');
+      const statusIcon = document.getElementById('statusIcon');
+      const statusMessage = document.getElementById('statusMessage');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const downloadStatusBtn = document.getElementById('downloadStatusBtn');
+      const downloadToast = document.getElementById('downloadToast');
+      const downloadToastText = document.getElementById('downloadToastText');
+      const closeToastBtn = document.getElementById('closeToastBtn');
+
+      let currentCaptcha = 'TCGZVH';
+      let spinAngle = 0;
+      const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+      function generateRandomCode(length = 6) {
+        let result = '';
+        for (let i = 0; i < length; i++) {
+          result += CAPTCHA_CHARS[Math.floor(Math.random() * CAPTCHA_CHARS.length)];
+        }
+        return result;
+      }
+
+      function drawCaptcha(code) {
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.clearRect(0, 0, width, height);
+
+        const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+        bgGrad.addColorStop(0, '#7c6c84');
+        bgGrad.addColorStop(0.5, '#8e7d96');
+        bgGrad.addColorStop(1, '#75657d');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        const stripeColors = ['rgba(255,255,255,0.06)', 'rgba(45,35,52,0.08)', 'rgba(255,255,255,0.04)', 'rgba(40,30,48,0.07)'];
+        const bandWidth = width / 6;
+        for (let i = 0; i < 6; i++) {
+          ctx.fillStyle = stripeColors[i % stripeColors.length];
+          ctx.fillRect(i * bandWidth, 0, bandWidth, height);
+        }
+
+        ctx.strokeStyle = 'rgba(55, 45, 62, 0.22)';
+        ctx.lineWidth = 1;
+        for (let l = 0; l < 3; l++) {
+          ctx.beginPath();
+          ctx.moveTo(0, 10 + l * 12);
+          ctx.bezierCurveTo(width * 0.33, 6 + l * 14, width * 0.66, 18 + l * 8, width, 12 + l * 11);
+          ctx.stroke();
+        }
+
+        const presetOffsets = [
+          { yOffset: -3, angle: -0.04 },
+          { yOffset: -2, angle: 0.05 },
+          { yOffset: 3, angle: -0.05 },
+          { yOffset: -1, angle: 0.04 },
+          { yOffset: 4, angle: -0.03 },
+          { yOffset: 3, angle: 0.04 }
+        ];
+
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#09090b';
+
+        for (let i = 0; i < code.length; i++) {
+          const preset = code === 'TCGZVH' ? presetOffsets[i] : { yOffset: (Math.random() - 0.5) * 8, angle: (Math.random() - 0.5) * 0.18 };
+          ctx.save();
+          ctx.translate(18 + i * 24, height / 2 + 1 + preset.yOffset);
+          ctx.rotate(preset.angle);
+          ctx.font = '700 26px "Space Mono", "Courier New", monospace';
+          ctx.fillText(code[i], 0, 0);
+          ctx.restore();
+        }
+      }
+
+      function showFeedback(message) {
+        statusAlert.classList.remove('hidden');
+        statusAlert.classList.add('bg-red-50', 'border-red-200', 'text-red-700');
+        statusIcon.innerHTML = '<svg class="w-4 h-4 text-red-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" /></svg>';
+        statusMessage.textContent = message;
+      }
+
+      function switchToDashboard() {
+        statusAlert.classList.add('hidden');
+        loginView.classList.add('hidden');
+        loginView.classList.remove('flex');
+        dashboardView.classList.remove('hidden');
+        dashboardView.classList.add('flex');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      function switchToLogin() {
+        dashboardView.classList.add('hidden');
+        dashboardView.classList.remove('flex');
+        loginView.classList.remove('hidden');
+        loginView.classList.add('flex');
+        phoneInput.value = '';
+        passwordInput.value = '';
+        captchaInput.value = '';
+        downloadToast.classList.add('hidden');
+        currentCaptcha = generateRandomCode(6);
+        drawCaptcha(currentCaptcha);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      refreshBtn.addEventListener('click', function () {
+        spinAngle += 360;
+        refreshIcon.style.transform = `rotate(${spinAngle}deg)`;
+        currentCaptcha = generateRandomCode(6);
+        drawCaptcha(currentCaptcha);
+        captchaInput.value = '';
+        captchaInput.focus();
+      });
+
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!phoneInput.value.trim()) { showFeedback('Please enter a Phone Number.'); phoneInput.focus(); return; }
+        if (!passwordInput.value.trim()) { showFeedback('Please enter a Password.'); passwordInput.focus(); return; }
+        if (!captchaInput.value.trim()) { showFeedback('Please enter the Captcha.'); captchaInput.focus(); return; }
+        switchToDashboard();
+      });
+
+      logoutBtn.addEventListener('click', switchToLogin);
+
+      function pdfEscape(str) {
+        return String(str).replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)').replace(/[^\x20-\x7E]/g, ' ');
+      }
+
+      function buildHallTicketPdfBlob() {
+        const ops = [];
+        const setStrokeRGB = (r, g, b) => ops.push(`${r.toFixed(3)} ${g.toFixed(3)} ${b.toFixed(3)} RG`);
+        const setFillRGB = (r, g, b) => ops.push(`${r.toFixed(3)} ${g.toFixed(3)} ${b.toFixed(3)} rg`);
+        const setLineWidth = (w) => ops.push(`${w.toFixed(2)} w`);
+        const drawRect = (x, y, w, h, mode = 'S') => ops.push(`${x.toFixed(2)} ${y.toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)} re ${mode}`);
+        const drawLine = (x1, y1, x2, y2) => ops.push(`${x1.toFixed(2)} ${y1.toFixed(2)} m ${x2.toFixed(2)} ${y2.toFixed(2)} l S`);
+        const drawText = (text, x, y, fontKey = 'F1', size = 10) => ops.push(`BT /${fontKey} ${size} Tf 1 0 0 1 ${x.toFixed(2)} ${y.toFixed(2)} Tm (${pdfEscape(text)}) Tj ET`);
+        const drawCenteredText = (text, centerX, y, fontKey = 'F2', size = 11, avgCharRatio = 0.52) => drawText(text, centerX - (text.length * size * avgCharRatio) / 2, y, fontKey, size);
+
+        const pageW = 595.28, margin = 34, contentW = pageW - margin * 2;
+        setStrokeRGB(0.15, 0.15, 0.15); setFillRGB(1, 1, 1); setLineWidth(1.1);
+        drawRect(margin, 32, contentW, 778, 'S');
+
+        const headerBottom = 696;
+        drawLine(margin, headerBottom, margin + contentW, headerBottom);
+        setFillRGB(0.0, 0.22, 0.58); drawText('TN skills', margin + 14, 788, 'F2', 14);
+        setFillRGB(0.92, 0.70, 0.03); drawRect(margin + 14, 782, 22, 2.2, 'f');
+        setFillRGB(0.82, 0.15, 0.15); drawRect(margin + 38, 782, 18, 2.2, 'f');
+        setFillRGB(0.09, 0.58, 0.24); drawRect(margin + 58, 782, 16, 2.2, 'f');
+
+        const photoBoxW = 86, photoBoxH = 98, photoBoxX = margin + contentW - photoBoxW - 14, photoBoxY = headerBottom + 8;
+        const headerTextCenterX = margin + (photoBoxX - margin) / 2 + 12;
+
+        setFillRGB(0.07, 0.10, 0.18);
+        drawCenteredText('TAMILNADU SKILL DEVELOPMENT CORPORATION', headerTextCenterX, 772, 'F2', 11.2, 0.53);
+        drawCenteredText('TN SKILLS COMPETITION - 2026', headerTextCenterX, 754, 'F2', 11, 0.53);
+        setFillRGB(0.0, 0.34, 0.72); drawCenteredText('HALL TICKET', headerTextCenterX, 734, 'F2', 12, 0.55);
+        setFillRGB(0.15, 0.15, 0.15); drawCenteredText('LEVEL 1 - MCQ', headerTextCenterX, 715, 'F2', 10.5, 0.53);
+
+        setStrokeRGB(0.12, 0.12, 0.12); setLineWidth(1.2); drawRect(photoBoxX, photoBoxY, photoBoxW, photoBoxH, 'S');
+        setLineWidth(0.7); drawRect(photoBoxX + 8, photoBoxY + 34, photoBoxW - 16, 30, 'S');
+        setFillRGB(0.15, 0.15, 0.15);
+        drawCenteredText('PASSPORT', photoBoxX + photoBoxW / 2, photoBoxY + 51, 'F2', 7.8, 0.54);
+        drawCenteredText('SIZE PHOTO', photoBoxX + photoBoxW / 2, photoBoxY + 40, 'F2', 7.8, 0.54);
+
+        const tableX = margin + 12, tableW = contentW - 24, col1W = 28, col2W = 128, col3W = 16;
+        const rows = [
+          { no: '1', label: 'NAME', value1: 'J Kishor', value2: '' },
+          { no: '2', label: 'TN SKILLS ID', value1: '278992196', value2: '' },
+          { no: '3', label: 'DISTRICT', value1: 'THIRUVALLUR', value2: '' },
+          { no: '4', label: 'SKILL CODE', value1: '62', value2: '' },
+          { no: '5', label: 'SKILL NAME', value1: 'Web Technologies', value2: '' },
+          { no: '6', label: 'DATE AND TIME', value1: '21-11-2026   |   03:00 PM', value2: '' },
+          { no: '7', label: 'VENUE', value1: 'JACOB MATRIC HR SEC SCHOOL THIRUVALLUR - 602 001', value2: '(NEAR T.E.L.C CHURCH)' }
+        ];
+
+        let currentY = headerBottom - 12;
+        setLineWidth(0.75);
+        rows.forEach((row, idx) => {
+          const rowH = row.value2 ? 34 : 23, rowBottom = currentY - rowH;
+          if (idx % 2 === 0) { setFillRGB(0.975, 0.985, 0.995); drawRect(tableX, rowBottom, tableW, rowH, 'f'); }
+          setStrokeRGB(0.3, 0.3, 0.3); drawRect(tableX, rowBottom, tableW, rowH, 'S');
+          drawLine(tableX + col1W, rowBottom, tableX + col1W, currentY);
+          drawLine(tableX + col1W + col2W, rowBottom, tableX + col1W + col2W, currentY);
+          drawLine(tableX + col1W + col2W + col3W, rowBottom, tableX + col1W + col2W + col3W, currentY);
+
+          const textY = row.value2 ? rowBottom + 20 : rowBottom + 7.5;
+          setFillRGB(0.1, 0.1, 0.1);
+          drawText(row.no, tableX + 10, textY, 'F2', 9.5);
+          drawText(row.label, tableX + col1W + 8, textY, 'F2', 9.5);
+          drawText(':', tableX + col1W + col2W + 6, textY, 'F2', 9.5);
+          drawText(row.value1, tableX + col1W + col2W + col3W + 8, textY, 'F2', 9.5);
+          if (row.value2) drawText(row.value2, tableX + col1W + col2W + col3W + 8, rowBottom + 7, 'F2', 9.2);
+          currentY = rowBottom;
+        });
+
+        let instY = currentY - 22;
+        setFillRGB(0.0, 0.25, 0.60); drawText('Exam Instructions:', tableX, instY, 'F2', 10.5);
+        setStrokeRGB(0.0, 0.25, 0.60); setLineWidth(0.8); drawLine(tableX, instY - 3, tableX + 96, instY - 3);
+        instY -= 16;
+
+        const instructions = [
+          '1. Affix a recent passport-size photograph in the designated space on the hall ticket.',
+          '2. Candidates must present a valid government-issued photo ID for verification. The details on the ID must',
+          '    match the information printed on the hall ticket.',
+          '3. Candidates must report to the examination centre well before 02:00 PM.',
+          '4. Late entry is strictly prohibited. No candidate will be allowed to enter the examination hall after 02:45 PM.',
+          '5. Only black ball-point pens are permitted. Items such as pencils, fountain pens, gel pens, or any other',
+          '    writing instruments are not allowed.',
+          '6. Do not tamper with the OMR sheet or question paper. Any damaged or altered material will not be accepted.',
+          '7. Do not tear, fold, or detach any pages from the question booklet.',
+          '8. Candidates must strictly return the question booklet to the invigilator upon completion of the examination.',
+          '9. Use of electronic gadgets or prohibited materials is strictly banned inside the examination premises',
+          '    (e.g., mobile phones, calculators, smart watches, smart rings, books, or other printed/digital materials).',
+          '10. Possession of prohibited items or involvement in any malpractice will lead to disqualification and',
+          '      debarment from future skill competitions.',
+          '11. Any form of cheating, impersonation, or misconduct is strictly prohibited. Candidates must strictly adhere',
+          '      to the examination rules to ensure fairness and integrity.'
+        ];
+
+        setFillRGB(0.14, 0.14, 0.14);
+        instructions.forEach((line) => {
+          drawText(line, tableX + 2, instY, 'F1', 8.7);
+          instY -= line.startsWith('    ') ? 11.5 : 13.5;
+        });
+
+        instY -= 6;
+        setFillRGB(0.05, 0.18, 0.45);
+        drawText('For any queries contact: tnskills@tnsdc.in', tableX + 2, instY, 'F2', 9.2);
+
+        const sigLineX1 = margin + contentW - 175, sigLineX2 = margin + contentW - 18, sigY = 58;
+        setStrokeRGB(0.2, 0.2, 0.2); setLineWidth(0.8); drawLine(sigLineX1, sigY + 14, sigLineX2, sigY + 14);
+        setFillRGB(0.12, 0.12, 0.12); drawCenteredText('Signature of the candidate', (sigLineX1 + sigLineX2) / 2, sigY, 'F2', 9.5, 0.52);
+
+        const contentStream = ops.join('\n');
+        const objects = [
+          '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n',
+          '2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n',
+          '3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>\nendobj\n',
+          '4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n',
+          '5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>\nendobj\n',
+          `6 0 obj\n<< /Length ${contentStream.length} >>\nstream\n${contentStream}\nendstream\nendobj\n`
+        ];
+
+        let pdf = '%PDF-1.4\n';
+        const offsets = [0];
+        for (let i = 0; i < objects.length; i++) { offsets.push(pdf.length); pdf += objects[i]; }
+        const xrefOffset = pdf.length;
+        pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+        for (let i = 1; i < offsets.length; i++) pdf += String(offsets[i]).padStart(10, '0') + ' 00000 n \n';
+        pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
+
+        const bytes = new Uint8Array(pdf.length);
+        for (let i = 0; i < pdf.length; i++) bytes[i] = pdf.charCodeAt(i) & 0xff;
+        return new Blob([bytes], { type: 'application/pdf' });
+      }
+
+      downloadStatusBtn.addEventListener('click', function () {
+        const pdfBlob = buildHallTicketPdfBlob();
+        const url = URL.createObjectURL(pdfBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'TN_Skills_2026_Hall_Ticket_J_Kishor.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        downloadToastText.textContent = 'TN_Skills_2026_Hall_Ticket_J_Kishor.pdf downloaded successfully.';
+        downloadToast.classList.remove('hidden');
+      });
+
+      closeToastBtn.addEventListener('click', () => downloadToast.classList.add('hidden'));
+      window.addEventListener('load', () => drawCaptcha(currentCaptcha));
+      drawCaptcha(currentCaptcha);
+    })();
+  </script>
